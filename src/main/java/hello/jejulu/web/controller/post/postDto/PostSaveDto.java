@@ -8,24 +8,27 @@ import hello.jejulu.repository.ThumbnailRepository_B;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotBlank;
+
 @Getter @Setter
 @RequiredArgsConstructor
 public class PostSaveDto {
 
     private final ThumbnailRepository_B thumbnailRepository_B;
 
-   // @NotBlank
+   @NotBlank
     private String title;
 
-   // @NotBlank
+   @NotBlank
     private String description;
 
+   //@NotBlank
     private Category category;
 
 
     private MultipartFile file;
 
-   // @NotBlank
+   @NotBlank
     private String content;
 
     public static Post toPost(PostSaveDto form, Thumbnail thumbnail, Host host){

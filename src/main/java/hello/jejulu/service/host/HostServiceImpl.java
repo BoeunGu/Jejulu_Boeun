@@ -25,8 +25,8 @@ public class HostServiceImpl{
     public Host join(Host host){
         validateDuplicateHost(host);
         hostRepositoryB.save(host);
-        Host joinedHost = hostRepositoryB.findByPk(host.getId());
-        return joinedHost;
+        Optional<Host> joinedHost = hostRepositoryB.findByPk(host.getId());
+        return joinedHost.orElse(null);
     }
 
     /**
@@ -54,7 +54,7 @@ public class HostServiceImpl{
      */
     @Transactional
     public Host updateHost(Long hostId,String name,String address,String phone,String email){
-        Host findHost=hostRepositoryB.findByPk(hostId);
+       Host findHost=hostRepositoryB.findByPk(hostId).orElse(null);
         findHost.setHostName(name);
         findHost.setAddress(address);
         findHost.setPhone(phone);
@@ -85,12 +85,24 @@ public class HostServiceImpl{
 
     /**
      * 호스트 조회
-     * @param hostId
+     * 로그인 아이디
+     * @param  hostId
      * @return
      */
     public Optional<Host> findHostId(String hostId){
         Optional<Host> byLoginId = hostRepositoryB.findByLoginId(hostId);
         return byLoginId;
+    }
+
+    /**
+     * 호스트 조회
+     * PK
+     * @param  hostId
+     * @return
+     */
+    public Optional<Host> findHostId(Long hostId){
+        Optional<Host> byHostPk = hostRepositoryB.findByPk(hostId);
+        return byHostPk;
     }
 
 }

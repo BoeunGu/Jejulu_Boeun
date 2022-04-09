@@ -33,12 +33,11 @@ public class HostRepository_B {
      * @param id
      * @return
      */
-    public Host findByPk(Long id){
+    public Optional<Host> findByPk(Long id){
 
         return findAll().stream()
                 .filter(h-> h.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
     }
 
     /**
@@ -78,8 +77,8 @@ public class HostRepository_B {
      */
     public void removeHost(Long hostId){
 
-        Host findHost = findByPk(hostId);
-        em.remove(findHost);
+        Optional<Host> byPk = findByPk(hostId);
+        em.remove(byPk.orElse(null));
     }
 
 

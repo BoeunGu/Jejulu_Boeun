@@ -12,7 +12,9 @@ import javax.validation.constraints.NotBlank;
 @Builder
 public class HostUpdateDto {
 
-
+    /**
+     * Update 스펙(View에서 필요한 정보)
+     */
     private Long id;
 
     @NotBlank

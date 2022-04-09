@@ -10,6 +10,7 @@ import hello.jejulu.service.post.ThumbnailService_B;
 import hello.jejulu.web.consts.SessionConst;
 import hello.jejulu.web.controller.post.postDto.PostDto;
 import hello.jejulu.web.controller.post.postDto.PostSaveDto;
+import hello.jejulu.web.controller.post.postDto.PostUpdateDto;
 import hello.jejulu.web.controller.post.postDto.postPagingDto;
 import hello.jejulu.web.exception.CustomException;
 import hello.jejulu.web.exception.ErrorCode;
@@ -69,7 +70,7 @@ public class PostController implements SessionConst {
             return "redirect:/";
         }
 
-        Host entityHost = hostRepositoryB.findByPk(host.getId());
+        Host entityHost = hostRepositoryB.findByPk(host.getId()).orElse(null);
         postService.savePost(form,entityHost);
 
         return"redirect:/";
@@ -103,7 +104,8 @@ public class PostController implements SessionConst {
                                Model model){
 
         Post post = postService.searchPost(postId);
-        model.addAttribute("update", post);
+        PostUpdateDto postUpdateDto = PostUpdateDto.updatePost(post);
+        model.addAttribute("update", postUpdateDto);
 
         return "jejulu/posts/post-update-form";
 

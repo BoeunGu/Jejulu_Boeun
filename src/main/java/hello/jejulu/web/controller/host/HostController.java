@@ -88,7 +88,9 @@ public class HostController {
     @GetMapping("/{hostId}")
     public String hostPage(@PathVariable Long hostId,
                                Model model){
-        Host findHost = hostRepository_B.findByPk(hostId);
+        Optional<Host> findHost = hostService.findHostId(hostId);
+
+        //Host findHost = hostRepository_B.findByPk(hostId);
         model.addAttribute("detail", findHost);
         return "jejulu/hosts/host";
     }
@@ -100,7 +102,7 @@ public class HostController {
     @GetMapping("/{hostId}/edit")
     public String hostEditPage(@PathVariable Long hostId,
                                Model model){
-        Host findHost = hostRepository_B.findByPk(hostId);
+        Host findHost = hostRepository_B.findByPk(hostId).orElse(null);
         HostUpdateDto hostForUpdate = HostUpdateDto.updateHost(findHost);
         model.addAttribute("update", hostForUpdate);
         return "jejulu/hosts/host-update-form";
