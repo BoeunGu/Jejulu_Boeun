@@ -65,14 +65,11 @@ public class PostController implements SessionConst {
         HttpSession session = request.getSession(false);
         Host host =(Host)session.getAttribute(SessionConst.HOST);
 
-        Host entityHost = hostRepositoryB.findByPk(host.getId());
-
-
         if(host==null){
             return "redirect:/";
         }
-       // Thumbnail thumbnail = thumbnailServiceB.createThumbnail(form.getFile());
-       // Thumbnail entityThumbnail = thumbnailServiceB.findThumbnail(thumbnailId);
+
+        Host entityHost = hostRepositoryB.findByPk(host.getId());
         postService.savePost(form,entityHost);
 
         return"redirect:/";
@@ -88,11 +85,10 @@ public class PostController implements SessionConst {
         //세션조회-> 호스트가져오기
         HttpSession session = request.getSession(false);
         Host sessionHost = (Host)session.getAttribute(SessionConst.HOST);
-        Host entityHost = hostRepositoryB.findByPk(sessionHost.getId());
 
         //포스트 가져오기
         Post post = postService.searchPost(postId);
-        PostDto postView = PostDto.createPostView(post,entityHost);
+        PostDto postView = PostDto.createPostView(post,sessionHost);
 
         model.addAttribute("detail", postView);
         return "jejulu/posts/post";
