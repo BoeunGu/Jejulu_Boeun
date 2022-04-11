@@ -27,7 +27,7 @@ class HostRepository_BTest {
         //given
 
         Host host = new Host(1L, "test_host", "111111",
-                "보은이", "제주특별자치도 제주시 구좌읍 계룡길 5", "rnqhdms@ggggg.com",
+                "보은이", "제주특별자치도 제주시 구좌읍 계룡길 5", "rnqh@ggggg.com",
                 "010-5555-6666", Role.HOST, null);
 
 

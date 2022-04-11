@@ -19,7 +19,7 @@ public class TestDateHost {
    // @Transactional
     //@PostConstruct
     public void init() throws IOException {
-      Host join = hostService.join(new Host(99L, "test_host", "111111", "보은이", "제주특별자치도 제주시 구좌읍 계룡길 5", "rnqhdms@gmail.com", "010-2202-6380", Role.HOST, null));
+      Host join = hostService.join(new Host(99L, "test_host", "111111", "보은이", "제주특별자치도 제주시 구좌읍 계룡길 5", "rnqh@gmail.com", "010-2202-6380", Role.HOST, null));
 
       
     }
