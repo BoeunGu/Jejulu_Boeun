@@ -6,10 +6,10 @@ services:
   # 서비스 명
   db:
     # 사용 이미지
-    image: nopecho/jejulu-mariadb:1.0
+    image: mariadb
 
     #컨테이너 이름
-    container_name: jejulu-mariadb
+    container_name: Jejulu_MariaDB_Boeun
 
     #접근 포트 [외부]:[내부]
     ports:
@@ -24,6 +24,6 @@ services:
       #TIME ZONE
       TZ: Asia/Seoul
 
-    #외부 디렉토리와 컨테이너 마운트(컨테이너에 있는 데이터 영속화)
+    #외부 디렉토리와 컨테이너 마운트(컨테이너에 있는 데이터 영속화,동기화)
     volumes:
-      - /home/ec2-user/app/db:/var/lib/mysql
+      - /Users/boeuns/dockerVolume:/var/lib/mysql

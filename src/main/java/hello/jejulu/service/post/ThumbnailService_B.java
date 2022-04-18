@@ -50,10 +50,8 @@ public class ThumbnailService_B {
         if(file.isEmpty()){
             return thumbnail.getId();
         }else {
-            // Thumbnail findThumbnail = findThumbnail(thumbnail.getId());
-//        Thumbnail savedThumbnail = createThumbnail(file);
+
             thumbnail.updateEntityThumbnail(uploadImage(file), file.getOriginalFilename());
-//        String thumbnailId = save(savedThumbnail);
 
         }
         return thumbnail.getId();
@@ -70,12 +68,6 @@ public class ThumbnailService_B {
 
 
 
-   // public static class Firebase {
-
-//        @Value("${firebase.bucket}")
-//        private static String firebaseBucket;
-
-
         //path
         public  String uploadImage(MultipartFile file) throws IOException {
             Bucket bucket = StorageClient.getInstance().bucket("jejulu-3b679.appspot.com");
@@ -83,14 +75,14 @@ public class ThumbnailService_B {
             String storeFileName = createStoreFileName(originFileName);
             InputStream image = new ByteArrayInputStream(file.getBytes());
             Blob blob = bucket.create("thumbnail/" + storeFileName, image, file.getContentType());
-            return getFirebaseImagePath(blob.getMediaLink());
+            return getFirebaseImagePath(blob.getMediaLink()); //구글-> 파이어베이스스토리지로 URL 변경함
         }
 
 
         //고유한 저장이름 생성 -> id
         private String createStoreFileName(String originFileName) {
             String uuid = UUID.randomUUID().toString();
-            String extendsName = extracted(originFileName);
+            String extendsName = extracted(originFileName);//확장자명 추출
             return uuid + "." + extendsName;
         }
 

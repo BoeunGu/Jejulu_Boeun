@@ -54,7 +54,7 @@ public class PostController implements SessionConst {
      * 게시물 등록
      */
     @PostMapping
-    public String savePost(@Validated@ModelAttribute PostSaveDto form,
+    public String savePost(@Validated @ModelAttribute PostSaveDto form,
                            BindingResult bindingResult,
                            HttpServletRequest request) throws IOException {
 

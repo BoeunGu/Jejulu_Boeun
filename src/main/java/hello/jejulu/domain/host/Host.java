@@ -48,6 +48,4 @@ public class Host extends BaseTimeEntity {
     private List<Post> post = new ArrayList<>();
 
 
-
-
 }

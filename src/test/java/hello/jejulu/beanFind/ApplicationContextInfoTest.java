@@ -7,7 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class ApplicationContextInfoTest {
 
-    //컨테이너생성 -> 빈등록 -> 의좀관계 주입
+    //컨테이너생성 -> 빈등록 -> 의존관계 주입
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(WebConfig.class);
 
     /**
