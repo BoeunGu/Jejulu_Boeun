@@ -19,7 +19,7 @@ import java.util.List;
 
 public class Host extends BaseTimeEntity {
 
-    @Id@GeneratedValue
+    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="host_id")
     private Long id;
 

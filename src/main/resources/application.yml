@@ -28,7 +28,7 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/test
+    url: jdbc:mariadb://localhost:3306/jejulu
     username: root
     password: 1234
 
@@ -47,6 +47,7 @@ logging:
       jejulu: debug
 
 firebase:
+  # 파이어베이스 엑세스 키 (외부 보관)
   config : /Users/app/config/firebase/firebaseAdminSdk.json
   bucket: jejulu-3b679.appspot.com
 
